@@ -34,9 +34,15 @@ func main() {
 	//如果返回是true  则代表“插入”  如果返回的是false 则代表“重写”
 	log.Printf("分区 %s 的注释被修改为：%v", "super", val)
 
+	//获取分区中的键值对
 	vInt, err := cfg.Int("must", "int")
 	if err != nil {
 		log.Fatalf("无法获取键值（%s）：%s", "int", err)
 	}
 	log.Printf("%s > %s:%v", "must", "int", vInt)
+	vFloat64, err := cfg.Float64("must", "float645")
+	if err != nil {
+		log.Fatalf("无法获取键值（%s）:%s", "float645", vFloat64)
+	}
+
 }

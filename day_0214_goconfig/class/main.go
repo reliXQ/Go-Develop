@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Unknwon/goconfig"
 	"log"
 )
@@ -37,12 +38,21 @@ func main() {
 	//获取分区中的键值对
 	vInt, err := cfg.Int("must", "int")
 	if err != nil {
-		log.Fatalf("无法获取键值（%s）：%s", "int", err)
-	}
-	log.Printf("%s > %s:%v", "must", "int", vInt)
+		log.Fatalf("无法获取键值（%s）：%s", "int", err) //这种打印会终止后面的操作
+	} //如果你想体验一下上面这条语句报错 只需要修改 vInt, err := cfg.Int("must", "int2")
+	log.Printf("%s > %s:%v", "must", "int", vInt) //must是区
+	fmt.Println("------0------")
 	vFloat64, err := cfg.Float64("must", "float645")
 	if err != nil {
-		log.Fatalf("无法获取键值（%s）:%s", "float645", vFloat64)
+		log.Fatalf("无法获取键值（%s）:%v", "float645", vFloat64)
 	}
-
+	log.Printf("%s > %s:%v", "must", "float64", vFloat64)
+	fmt.Println("------1-----")
+	vBool, err := cfg.Bool("must", "bool")
+	if err != nil {
+		log.Fatalf("无法获取键值（%s）:%v", "bool", vBool)
+	}
+	log.Printf("%s > %s:%v", "must", "bool", vBool)
+	fmt.Println("------2------")
+	//我是新增的
 }
